@@ -381,7 +381,7 @@ adapted with Meanwhile’s own concrete-and-signal palette.
 
 ### File structure
 ```
-semirent/
+meanwhile/
 ├─ index.html              # fonts, meta, the favicon (a lit-room SVG)
 ├─ src/
 │  ├─ main.jsx             # React entry
@@ -422,7 +422,7 @@ semirent/
 ## 12. Running, building, deploying
 
 ```bash
-cd ~/semirent
+cd ~/meanwhile
 npm install        # one-time
 npm run dev        # local dev → http://localhost:5173
 npm run build      # production build → dist/
@@ -450,9 +450,9 @@ Occupied, it’s *Meanwhile*.
 The wordmark sets **“Mean”** in Fraunces italic and **“while”** upright, closed
 with the signal-orange square (the lit pixel of an occupied space).
 
-> Note: the local project folder is still `~/semirent` (legacy path); the product,
-> wordmark, titles, copy and package name are all “Meanwhile.” The folder can be
-> renamed to `~/meanwhile` at any time.
+> Everything is now “Meanwhile” end to end — the product, wordmark, titles, copy,
+> package name, local folder (`~/meanwhile`) and the Git repo
+> (`asrithcheepurupalli/meanwhile`).
 
 ---
 
