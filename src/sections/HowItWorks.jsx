@@ -35,7 +35,8 @@ export default function HowItWorks() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
+    // mobile/tablet get a clean vertical stack — no pin / horizontal scroll-jack
+    if (reduce || window.innerWidth < 1024) return;
 
     const ctx = gsap.context(() => {
       const panels = gsap.utils.toArray(".hiw-panel");
@@ -75,27 +76,27 @@ export default function HowItWorks() {
     <section
       ref={root}
       data-nav-dark
-      className="relative h-[100svh] overflow-hidden bg-ink text-paper blueprint-grid-ink"
+      className="relative bg-ink py-24 text-paper blueprint-grid-ink lg:h-[100svh] lg:overflow-hidden lg:py-0"
     >
-      {/* header overlay */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 w-full px-6 pt-28 md:px-10">
+      {/* header — in flow on mobile, overlay on desktop */}
+      <div className="pointer-events-none relative z-10 mb-14 w-full px-6 lg:absolute lg:left-0 lg:top-0 lg:mb-0 lg:px-10 lg:pt-28">
         <div className="flex items-center gap-4">
           <span className="label text-[var(--color-signal)]">How it works</span>
-          <span className="h-px w-12 bg-ink-line" />
-          <span className="label text-grey">Scroll →</span>
+          <span className="hidden h-px w-12 bg-ink-line lg:block" />
+          <span className="label hidden text-grey lg:inline">Scroll →</span>
         </div>
-        <div className="mt-5 h-px w-full bg-ink-line">
+        <div className="mt-5 hidden h-px w-full bg-ink-line lg:block">
           <div className="hiw-progress h-full w-full origin-left scale-x-0 bg-[var(--color-signal)]" />
         </div>
       </div>
 
       <div
         ref={track}
-        className="flex h-full w-max items-center pl-6 md:pl-10"
+        className="flex flex-col gap-16 px-6 sm:gap-20 lg:h-full lg:w-max lg:flex-row lg:items-center lg:gap-0 lg:px-0 lg:pl-10"
       >
         {/* intro panel */}
-        <div className="hiw-panel flex h-full w-[86vw] shrink-0 flex-col justify-center pr-[8vw] md:w-[60vw]">
-          <h2 className="display text-[12vw] leading-[0.9] md:text-[7rem]">
+        <div className="hiw-panel flex w-full shrink-0 flex-col justify-center lg:h-full lg:w-[60vw] lg:pr-[8vw]">
+          <h2 className="display text-[13vw] leading-[0.9] sm:text-[9vw] lg:text-[7rem]">
             Three moves.<br />
             <span className="serif-italic text-grey-dim">Everyone wins.</span>
           </h2>
@@ -110,9 +111,9 @@ export default function HowItWorks() {
         ))}
 
         {/* closing panel */}
-        <div className="hiw-panel flex h-full w-[80vw] shrink-0 flex-col justify-center px-[6vw] md:w-[44vw]">
+        <div className="hiw-panel flex w-full shrink-0 flex-col justify-center lg:h-full lg:w-[44vw] lg:px-[6vw]">
           <span className="hiw-rise label text-[var(--color-signal)]">Result</span>
-          <h3 className="hiw-rise display mt-4 text-[9vw] leading-[0.95] md:text-5xl">
+          <h3 className="hiw-rise display mt-4 text-[10vw] leading-[0.95] sm:text-[7vw] lg:text-5xl">
             A vacancy problem becomes a{" "}
             <span className="text-[var(--color-signal)]">business opportunity.</span>
           </h3>
@@ -124,11 +125,11 @@ export default function HowItWorks() {
 
 function Panel({ step }) {
   return (
-    <div className="hiw-panel flex h-full w-[88vw] shrink-0 items-center pr-[6vw] md:w-[52vw]">
+    <div className="hiw-panel flex w-full shrink-0 items-center lg:h-full lg:w-[52vw] lg:pr-[6vw]">
       <div className="w-full">
         <div className="hiw-rise flex items-center gap-4">
           <span
-            className="display text-[20vw] leading-none md:text-[12rem]"
+            className="display text-[26vw] leading-none sm:text-[20vw] lg:text-[12rem]"
             style={{ color: step.tint }}
           >
             {step.n}
@@ -137,7 +138,7 @@ function Panel({ step }) {
             {step.role}
           </span>
         </div>
-        <h3 className="hiw-rise display mt-6 text-[8vw] leading-[1] md:text-5xl">
+        <h3 className="hiw-rise display mt-6 text-[10vw] leading-[1.02] sm:text-[7vw] lg:text-5xl">
           {step.title}
         </h3>
         <p className="hiw-rise mt-5 max-w-[42ch] text-lg text-grey-dim">
