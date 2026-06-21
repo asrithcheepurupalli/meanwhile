@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Meanwhile — Concept Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f1ede6; --paper2:#e7e1d7; --ink:#0c0d0f; --ink2:#15161a;
+    --ink-soft:#4a463f; --ink-faint:#8b857b;
+    --cream:#f1ede6; --cream-soft:rgba(241,237,230,.7); --cream-faint:rgba(241,237,230,.42);
+    --signal:#ff5a1f; --signal-bright:#ff7a47; --brass:#b08a4f; --brass-bright:#cdaa6a;
+    --blue:#2f6df0; --blue-bright:#5a8bf5;
+    --serif:'Fraunces',Georgia,serif; --sans:'Hanken Grotesk',system-ui,sans-serif; --mono:'Space Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#5b554c;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  @page{ size:A4 landscape; margin:0; }
+  .page{
+    position:relative; width:297mm; height:210mm; overflow:hidden;
+    margin:0 auto; page-break-after:always;
+    padding:15mm 17mm; font-family:var(--sans);
+    background:var(--paper); color:var(--ink);
+  }
+  .page:last-child{ page-break-after:auto; }
+  .page::before{ content:""; position:absolute; inset:0; pointer-events:none;
+    background-image:linear-gradient(rgba(12,13,15,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(12,13,15,.05) 1px,transparent 1px);
+    background-size:34px 34px; }
+  .page.dark{ background:var(--ink); color:var(--cream); }
+  .page.dark::before{ background-image:linear-gradient(rgba(241,237,230,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(241,237,230,.05) 1px,transparent 1px); }
+  .in{ position:relative; height:100%; display:flex; flex-direction:column; }
+
+  h1,h2,h3{ font-family:var(--serif); font-weight:400; margin:0; line-height:1.02; letter-spacing:-.018em; }
+  p{margin:0}
+  em{ font-style:italic; }
+
+  /* mono chrome */
+  .kick{ display:flex; align-items:center; gap:14px; font-family:var(--mono); font-size:10px; letter-spacing:.32em; text-transform:uppercase; }
+  .kick .a{ color:var(--signal); } .dark .kick .a{ color:var(--signal-bright); }
+  .kick .sep{ width:54px; height:1px; background:currentColor; opacity:.4; }
+  .kick .m{ color:var(--ink-faint); } .dark .kick .m{ color:var(--cream-faint); }
+  .topbar{ display:flex; justify-content:space-between; align-items:center; font-family:var(--mono); font-size:10px; letter-spacing:.3em; text-transform:uppercase; }
+  .topbar .a{ color:var(--signal-bright); } .topbar .m{ color:var(--cream-faint); }
+  .footbar{ margin-top:auto; display:flex; justify-content:space-between; align-items:flex-end; font-family:var(--mono); font-size:9.5px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-faint); }
+  .dark .footbar{ color:var(--cream-faint); }
+
+  .h-lg{ font-size:42px; line-height:1.02; max-width:18ch; }
+  .sub{ font-size:13.5px; line-height:1.62; max-width:58ch; color:var(--ink-soft); margin-top:18px; }
+  .dark .sub{ color:var(--cream-soft); }
+
+  /* wordmark */
+  .wm{ font-family:var(--serif); }
+  .wm em{ font-style:italic; }
+  .wm .sq{ display:inline-block; width:.34em; height:.34em; background:var(--signal); margin-left:.14em; vertical-align:baseline; }
+
+  /* cover */
+  .cover .word{ font-size:30px; letter-spacing:-.01em; margin:54px 0 30px; }
+  .cover h1{ font-size:74px; line-height:.96; letter-spacing:-.03em; }
+  .cover h1 .l2{ display:block; font-style:italic; color:var(--signal-bright); }
+  .cover .sub{ color:var(--cream-soft); max-width:54ch; margin-top:24px; }
+  .cover .band{ margin-top:40px; height:74px; border-top:1px solid rgba(176,138,79,.5); display:flex; align-items:center; }
+  .cover .band span{ font-family:var(--mono); font-size:10px; letter-spacing:.34em; text-transform:uppercase; color:var(--cream-faint); }
+
+  /* concept cards */
+  .two{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:34px; }
+  .card{ border:1px solid rgba(12,13,15,.18); border-radius:6px; padding:26px 28px 64px; position:relative; }
+  .card.alt{ background:rgba(255,90,31,.05); }
+  .card .lbl{ font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--signal); margin-bottom:16px; }
+  .card.alt .lbl{ color:var(--brass); }
+  .card h3{ font-size:26px; margin-bottom:12px; }
+  .card p{ font-size:12.5px; line-height:1.6; color:var(--ink-soft); max-width:42ch; }
+
+  /* problem chain + stats */
+  .chain{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:34px; }
+  .step{ border:1px solid rgba(241,237,230,.16); border-radius:7px; padding:16px 16px 20px; }
+  .step .d{ font-family:var(--mono); font-size:9px; letter-spacing:.18em; color:var(--cream-faint); }
+  .step .t{ font-family:var(--serif); font-size:19px; margin:10px 0 12px; }
+  .step .p{ font-family:var(--mono); font-size:16px; }
+  .step .p.lo{ color:var(--brass-bright); } .step .p.hi{ color:var(--signal-bright); }
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px; }
+  .stat .n{ font-family:var(--serif); font-size:46px; line-height:.9; }
+  .stat.t1 .n{ color:var(--brass-bright); } .stat.t2 .n{ color:var(--blue-bright); } .stat.t3 .n{ color:var(--signal-bright); }
+  .stat .c{ font-family:var(--mono); font-size:10px; letter-spacing:.04em; color:var(--cream-faint); margin-top:8px; }
+
+  /* art direction */
+  .ad{ display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:28px; }
+  .adlab{ font-family:var(--mono); font-size:10px; letter-spacing:.26em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:16px; }
+  .swz{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .sw{ aspect-ratio:1.5/1; border-radius:6px; border:1px solid rgba(12,13,15,.12); position:relative; padding:11px; display:flex; flex-direction:column; justify-content:flex-end; }
+  .sw .nm{ font-family:var(--mono); font-size:9px; line-height:1.5; }
+  .motif{ margin-top:24px; }
+  .motif__box{ border:1px solid rgba(12,13,15,.14); border-radius:7px; padding:18px; background:rgba(255,90,31,.05); }
+  .motif__box p{ font-size:11px; line-height:1.5; color:var(--ink-soft); margin-top:10px; }
+  .ty{ margin-bottom:18px; border-bottom:1px solid rgba(12,13,15,.1); padding-bottom:15px; }
+  .ty:last-of-type{ border-bottom:0; }
+  .ty .f{ font-family:var(--serif); font-size:32px; }
+  .ty .f.sans{ font-family:var(--sans); font-weight:500; font-size:27px; }
+  .ty .f.mono{ font-family:var(--mono); font-size:22px; }
+  .ty .d{ font-family:var(--mono); font-size:10px; letter-spacing:.04em; color:var(--ink-faint); margin-top:6px; }
+  .tags{ display:flex; flex-wrap:wrap; gap:9px; margin-top:16px; }
+  .tag{ font-family:var(--mono); font-size:9.5px; letter-spacing:.06em; border:1px solid rgba(12,13,15,.22); border-radius:999px; padding:7px 13px; color:var(--ink-soft); }
+
+  /* screens */
+  .scr{ display:grid; grid-template-columns:1.55fr 1fr; gap:34px; margin-top:24px; align-items:start; }
+  .browser{ border-radius:9px; overflow:hidden; border:1px solid rgba(12,13,15,.16); box-shadow:0 16px 40px rgba(12,13,15,.16); background:#fff; }
+  .browser__bar{ height:26px; background:var(--paper2); display:flex; align-items:center; gap:6px; padding-left:12px; border-bottom:1px solid rgba(12,13,15,.08); }
+  .browser__bar i{ width:9px; height:9px; border-radius:50%; display:block; }
+  .browser__bar i:nth-child(1){ background:var(--signal); } .browser__bar i:nth-child(2){ background:var(--brass); } .browser__bar i:nth-child(3){ background:var(--blue); }
+  .browser__img{ overflow:hidden; max-height:126mm; }
+  .browser__img img{ width:100%; height:auto; display:block; }
+  .scrtxt .d{ font-size:12.5px; line-height:1.62; color:var(--ink-soft); }
+  .scrlist{ list-style:none; padding:0; margin:22px 0 0; }
+  .scrlist li{ font-size:11.5px; color:var(--ink-soft); padding:9px 0 9px 18px; border-top:1px solid rgba(12,13,15,.1); position:relative; }
+  .scrlist li::before{ content:"—"; position:absolute; left:0; color:var(--signal); }
+
+  /* craft */
+  .craftgrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:34px; border-top:1px solid rgba(241,237,230,.18); }
+  .cr{ padding:20px 18px 0; border-left:1px solid rgba(241,237,230,.12); }
+  .cr:first-child{ border-left:0; padding-left:0; }
+  .cr .n{ font-family:var(--mono); font-size:11px; color:var(--signal-bright); }
+  .cr .t{ font-family:var(--serif); font-size:19px; margin:10px 0 9px; }
+  .cr .b{ font-size:11px; line-height:1.5; color:var(--cream-soft); }
+  .stack{ display:flex; flex-wrap:wrap; gap:9px; margin-top:28px; }
+  .stack .tag{ border-color:rgba(241,237,230,.22); color:var(--cream-soft); }
+  .endword{ font-family:var(--serif); font-size:40px; margin-top:auto; }
+  .endrow{ display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(241,237,230,.14); padding-top:16px; margin-top:18px; }
+  .endrow .line{ font-size:12px; color:var(--cream-soft); }
+  .endrow .line em{ font-style:italic; color:var(--brass-bright); }
+  .endrow .mac{ font-family:var(--serif); font-size:20px; text-align:right; }
+  .endrow .mac .sq{ display:inline-block; width:.3em; height:.3em; background:var(--signal-bright); margin-left:.1em; }
+  .endrow .mac .u{ display:block; font-family:var(--mono); font-size:9px; letter-spacing:.26em; color:var(--cream-faint); margin-top:5px; }
+</style>
+</head>
+<body>
+
+<!-- 1 · COVER -->
+<section class="page dark cover">
+  <div class="in">
+    <div class="topbar"><span class="a">MADE. BY AC · DESIGN STUDIO</span><span class="m">CONCEPT STUDY / 2026</span></div>
+    <p class="word wm"><em>Mean</em>while<span class="sq"></span></p>
+    <h1>Fill the empty.<span class="l2">Fuel the growing.</span></h1>
+    <p class="sub">A design-showcase concept — the marketplace for the in-between. Owners monetize vacant commercial space at reduced rates; growing businesses get premium locations at a fraction of the rent.</p>
+    <div class="band"><span>Temporary commercial occupancy · India</span></div>
+    <div class="footbar"><span>A MADE. STUDIO PORTFOLIO PIECE</span><span>01 — MEANWHILE</span></div>
+  </div>
+</section>
+
+<!-- 2 · THE CONCEPT -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">THE CONCEPT</span><span class="sep"></span><span class="m">A NEW CATEGORY</span></div>
+    <h1 class="h-lg" style="margin-top:22px">Leasing offered two answers. We added <em>a third.</em></h1>
+    <p class="sub">A unit is either occupied or vacant — earning full rent, or nothing at all. Meanwhile introduces the in-between: temporary occupancy that pays the owner from day one and keeps every option open.</p>
+    <div class="two">
+      <div class="card">
+        <div class="lbl">FOR THE OWNER</div>
+        <h3>Earn during the vacancy</h3>
+        <p>List a vacant unit at a reduced "meanwhile" rate and earn income while you keep hunting for the full-rent tenant — with total flexibility and a clear notice period written into the contract.</p>
+      </div>
+      <div class="card alt">
+        <div class="lbl">FOR THE BUSINESS</div>
+        <h3>A premium address, half the rent</h3>
+        <p>Move into a high-footfall location you couldn't otherwise afford. Test the market on a short commitment — then vacate on notice, or convert to the full lease when you're ready.</p>
+      </div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>02</span></div>
+  </div>
+</section>
+
+<!-- 3 · THE PROBLEM -->
+<section class="page dark">
+  <div class="in">
+    <div class="kick"><span class="a">THE PROBLEM</span><span class="sep"></span><span class="m">WHY GOOD SPACE SITS DARK</span></div>
+    <h1 class="h-lg" style="margin-top:22px">A vacant unit earns nothing — and still costs.</h1>
+    <p class="sub">Owners hold out for the perfect long-term tenant while the meter runs. Growing businesses can't clear the upfront wall. So the space stays empty, and both sides lose.</p>
+    <div class="chain">
+      <div class="step"><div class="d">01 · LISTED</div><div class="t">Full rent set</div><div class="p">₹60,000</div></div>
+      <div class="step"><div class="d">02 · MONTH 1</div><div class="t">Vacant</div><div class="p lo">₹0</div></div>
+      <div class="step"><div class="d">03 · MONTH 2</div><div class="t">Still empty</div><div class="p lo">₹0</div></div>
+      <div class="step"><div class="d">04 · MONTH 3</div><div class="t">Costs mount</div><div class="p lo">₹0</div></div>
+      <div class="step"><div class="d">05 · RESULT</div><div class="t">Income lost</div><div class="p hi">−₹1.8L</div></div>
+    </div>
+    <div class="stats">
+      <div class="stat t1"><div class="n">12.4M ft²</div><div class="c">commercial space sitting vacant, India</div></div>
+      <div class="stat t2"><div class="n">3 months</div><div class="c">average commercial vacancy before a tenant</div></div>
+      <div class="stat t3"><div class="n">50%</div><div class="c">the meanwhile rate — half rent, occupied today</div></div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>03</span></div>
+  </div>
+</section>
+
+<!-- 4 · ART DIRECTION -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">ART DIRECTION</span><span class="sep"></span><span class="m">ARCHITECTURAL · NEGATIVE SPACE</span></div>
+    <h1 class="h-lg" style="margin-top:22px">We leaned into the subject: empty space.</h1>
+    <div class="ad">
+      <div>
+        <div class="adlab">PALETTE</div>
+        <div class="swz">
+          <div class="sw" style="background:#f1ede6"><span class="nm">Concrete paper<br>#f1ede6</span></div>
+          <div class="sw" style="background:#0c0d0f"><span class="nm" style="color:#f1ede6">Ink<br>#0c0d0f</span></div>
+          <div class="sw" style="background:#ff5a1f"><span class="nm" style="color:#fff">Signal orange<br>#ff5a1f</span></div>
+          <div class="sw" style="background:#b08a4f"><span class="nm" style="color:#0c0d0f">Brass<br>#b08a4f</span></div>
+          <div class="sw" style="background:#2f6df0"><span class="nm" style="color:#fff">Blueprint blue<br>#2f6df0</span></div>
+          <div class="sw" style="background:#e7e1d7"><span class="nm">Plaster dim<br>#e7e1d7</span></div>
+        </div>
+        <div class="motif">
+          <div class="adlab">RECURRING MOTIF</div>
+          <div class="motif__box">
+            <h3 style="font-size:22px" class="wm"><em>Mean</em>while<span class="sq" style="width:9px;height:9px;display:inline-block;background:#ff5a1f"></span></h3>
+            <p>Drawn floor-plans instead of stock photography, a blueprint grid under everything, and mono spec-labels — with one signal accent: the warm glow of lights coming on in a building that was dark. Ink "acts" punctuate a concrete-paper page.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="adlab">TYPOGRAPHY</div>
+        <div class="ty"><div class="f">Fraunces</div><div class="d">DISPLAY · the editorial serif, optical sizing, italic accents</div></div>
+        <div class="ty"><div class="f sans">Hanken Grotesk</div><div class="d">UI &amp; BODY · calm, legible humanist sans</div></div>
+        <div class="ty"><div class="f mono">Space Mono</div><div class="d">LABELS · eyebrows, data, the spec-sheet chrome</div></div>
+        <div class="tags">
+          <span class="tag">Living floor-plan hero</span>
+          <span class="tag">Vacancy odometer</span>
+          <span class="tag">Third-option switch</span>
+          <span class="tag">Horizontal how-it-works</span>
+          <span class="tag">Rent splitter</span>
+          <span class="tag">Title-block footer</span>
+          <span class="tag">made. cursor</span>
+          <span class="tag">Nav contrast-flip</span>
+        </div>
+      </div>
+    </div>
+    <div class="footbar"><span>BUILT ON THE MADE. STUDIO DESIGN SYSTEM</span><span>04</span></div>
+  </div>
+</section>
+
+<!-- 5 · SCREENS 01 -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">THE SCREENS · 01</span><span class="sep"></span><span class="m">MEANWHILE · CONCEPT STUDY</span></div>
+    <h1 class="h-lg" style="margin-top:20px">The whole argument, in one scroll.</h1>
+    <div class="scr">
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__img"><img src="./img/home.png" alt=""></div></div>
+      <div class="scrtxt">
+        <p class="d">The landing draws its own floor-plan — walls drawing themselves, rooms lighting in sequence — as the kinetic headline rises from behind masks. Every scroll is a beat: the cost of vacancy, the third option, how it works, the numbers.</p>
+        <ul class="scrlist">
+          <li>Living floor-plan hero (walls draw, rooms light)</li>
+          <li>Live vacancy odometer — sq ft empty right now</li>
+          <li>Kinetic masked headline</li>
+          <li>Manifesto that names the new category</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>05</span></div>
+  </div>
+</section>
+
+<!-- 6 · SCREENS 02 -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">THE SCREENS · 02</span><span class="sep"></span><span class="m">MEANWHILE · CONCEPT STUDY</span></div>
+    <h1 class="h-lg" style="margin-top:20px">The concept, made playable.</h1>
+    <div class="scr">
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__img"><img src="./img/third.png" alt=""></div></div>
+      <div class="scrtxt">
+        <p class="d">Visitors don't read the pitch — they feel it. A Vacant / Occupied / Meanwhile switch rewrites the revenue, the room and the story as you flip it; a draggable rent-splitter proves both sides come out ahead.</p>
+        <ul class="scrlist">
+          <li>Three-state occupancy switch</li>
+          <li>Windows light up as occupancy rises</li>
+          <li>Draggable rent splitter — the ₹60k example</li>
+          <li>Owner gain &amp; business saving, both positive</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>06</span></div>
+  </div>
+</section>
+
+<!-- 7 · SCREENS 03 -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">THE SCREENS · 03</span><span class="sep"></span><span class="m">MEANWHILE · CONCEPT STUDY</span></div>
+    <h1 class="h-lg" style="margin-top:20px">An index of the in-between.</h1>
+    <div class="scr">
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__img"><img src="./img/browse.png" alt=""></div></div>
+      <div class="scrtxt">
+        <p class="d">A filterable index of vacant units. Every card carries a uniquely generated floor-plan — drawn from the listing's ID, no two alike — with the meanwhile rate, the discount, and how long the unit has been dark.</p>
+        <ul class="scrlist">
+          <li>Filterable, sortable grid</li>
+          <li>Generated floor-plan thumbnails — code, not photos</li>
+          <li>Live "days vacant" badges</li>
+          <li>Meanwhile rate vs. full rent at a glance</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>07</span></div>
+  </div>
+</section>
+
+<!-- 8 · SCREENS 04 -->
+<section class="page">
+  <div class="in">
+    <div class="kick"><span class="a">THE SCREENS · 04</span><span class="sep"></span><span class="m">MEANWHILE · CONCEPT STUDY</span></div>
+    <h1 class="h-lg" style="margin-top:20px">Vacancy, working for the owner.</h1>
+    <div class="scr">
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><div class="browser__img"><img src="./img/dashboard.png" alt=""></div></div>
+      <div class="scrtxt">
+        <p class="d">The owner's dashboard turns the story into numbers: revenue recovered during vacancy, a chart that runs empty → meanwhile → converted, a verified inquiries feed, and a per-space status table.</p>
+        <ul class="scrlist">
+          <li>Revenue-recovered chart (empty → meanwhile → full)</li>
+          <li>Verified inquiries feed</li>
+          <li>Per-space status table</li>
+          <li>Listing detail — apply flow, spec sheet, pricing</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footbar"><span>MEANWHILE</span><span>08</span></div>
+  </div>
+</section>
+
+<!-- 9 · CRAFT -->
+<section class="page dark">
+  <div class="in">
+    <div class="kick"><span class="a">CRAFT</span><span class="sep"></span><span class="m">INTERACTIONS &amp; BUILD</span></div>
+    <h1 class="h-lg" style="margin-top:22px">The details are the design.</h1>
+    <div class="craftgrid">
+      <div class="cr"><div class="n">01</div><div class="t">Floor-plan motion</div><div class="b">SVG walls draw via stroke-dash; rooms light in sequence; a gentle parallax drift on scroll — and no paid plugins.</div></div>
+      <div class="cr"><div class="n">02</div><div class="t">Horizontal pin</div><div class="b">How-it-works pins and scrolls sideways on desktop via GSAP ScrollTrigger — and stacks cleanly into a vertical flow on mobile.</div></div>
+      <div class="cr"><div class="n">03</div><div class="t">Generated plans</div><div class="b">Every listing thumbnail is hashed from its ID into a unique floor-plan, so the whole site ships with zero photo assets.</div></div>
+      <div class="cr"><div class="n">04</div><div class="t">Motion &amp; reach</div><div class="b">Lenis smooth scroll, a custom cursor, nav contrast-flip — all honouring reduced-motion and consistent on every screen size.</div></div>
+    </div>
+    <div class="stack">
+      <span class="tag">React + Vite</span><span class="tag">Tailwind v4</span><span class="tag">GSAP ScrollTrigger</span>
+      <span class="tag">Lenis</span><span class="tag">React Router</span><span class="tag">Fraunces · Hanken · Space Mono</span>
+    </div>
+    <p class="endword wm"><em>Mean</em>while<span class="sq" style="width:14px;height:14px;display:inline-block;background:#ff7a47"></span></p>
+    <div class="endrow">
+      <div class="line">The vacancy was the problem. <em>The in-between is the answer.</em></div>
+      <div class="mac">made<span class="sq"></span> by ac<span class="u">MADE-BY-AC.COM · CONCEPT DEMO</span></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

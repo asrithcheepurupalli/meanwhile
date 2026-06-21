@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "handbook:pdf": "node build-handbook-pdf.mjs && \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf-no-header --print-to-pdf=Meanwhile-Handbook.pdf --virtual-time-budget=8000 \"file://$PWD/handbook.print.html\""
+    "handbook:pdf": "node build-handbook-pdf.mjs && \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf-no-header --print-to-pdf=Meanwhile-Handbook.pdf --virtual-time-budget=8000 \"file://$PWD/handbook.print.html\"",
+    "casestudy:pdf": "\"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf-no-header --allow-file-access-from-files --print-to-pdf=Meanwhile-Case-Study.pdf --virtual-time-budget=10000 \"file://$PWD/docs/Meanwhile-Case-Study.html\""
   },
   "dependencies": {
     "gsap": "^3.12.5",
