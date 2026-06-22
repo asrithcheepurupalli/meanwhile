@@ -108,7 +108,7 @@ export default function Hero() {
           style={{ transform: "translateY(12px)" }}
         >
           Millions of square feet sit dark while businesses can't afford the door.
-          Meanwhile is the marketplace for the in-between — temporary commercial
+          Meanwhile is the marketplace for the in-between: temporary commercial
           occupancy at a fraction of the rent.
         </div>
 

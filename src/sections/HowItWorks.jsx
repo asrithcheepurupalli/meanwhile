@@ -15,7 +15,7 @@ const STEPS = [
     n: "02",
     role: "Business",
     title: "Apply, verify, move in",
-    body: "A startup, retailer or studio finds the space, completes verification, reviews the occupancy terms and pays online. Keys in hand — at a fraction of full rent.",
+    body: "A startup, retailer or studio finds the space, completes verification, reviews the occupancy terms and pays online. Keys in hand, at a fraction of full rent.",
     fields: ["Discover", "Verify (KYC)", "Review terms", "Pay online", "Occupy"],
     tint: "var(--color-signal)",
   },
@@ -23,8 +23,8 @@ const STEPS = [
     n: "03",
     role: "Both",
     title: "Transition, on fair terms",
-    body: "When a long-term tenant appears, the occupant gets the agreed notice — or converts to the full lease if they're ready. Flexibility is written into the contract, not left to chance.",
-    fields: ["Notice served", "Smooth vacate", "— or —", "Convert to full lease"],
+    body: "When a long-term tenant appears, the occupant gets the agreed notice, or converts to the full lease if they're ready. Flexibility is written into the contract, not left to chance.",
+    fields: ["Notice served", "Smooth vacate", "or", "Convert to full lease"],
     tint: "var(--color-blue)",
   },
 ];
@@ -35,7 +35,7 @@ export default function HowItWorks() {
 
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // mobile/tablet get a clean vertical stack — no pin / horizontal scroll-jack
+    // mobile/tablet get a clean vertical stack, no pin / horizontal scroll-jack
     if (reduce || window.innerWidth < 1024) return;
 
     const ctx = gsap.context(() => {
@@ -78,7 +78,7 @@ export default function HowItWorks() {
       data-nav-dark
       className="relative bg-ink py-24 text-paper blueprint-grid-ink lg:h-[100svh] lg:overflow-hidden lg:py-0"
     >
-      {/* header — in flow on mobile, overlay on desktop */}
+      {/* header: in flow on mobile, overlay on desktop */}
       <div className="pointer-events-none relative z-10 mb-14 w-full px-6 lg:absolute lg:left-0 lg:top-0 lg:mb-0 lg:px-10 lg:pt-28">
         <div className="flex items-center gap-4">
           <span className="label text-[var(--color-signal)]">How it works</span>
@@ -101,7 +101,7 @@ export default function HowItWorks() {
             <span className="serif-italic text-grey-dim">Everyone wins.</span>
           </h2>
           <p className="mt-6 max-w-[40ch] text-lg text-grey-dim">
-            From a dark unit to a living business in a single, transparent flow —
+            From a dark unit to a living business in a single, transparent flow,
             then back to flexible when the time comes.
           </p>
         </div>

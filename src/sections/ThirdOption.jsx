@@ -8,7 +8,7 @@ const STATES = [
     revenue: "₹0",
     sub: "/ month",
     headline: "The space is empty.",
-    body: "No tenant, no income — but the costs keep coming. Maintenance, taxes, the slow decay of a room nobody walks into. The default outcome of waiting for the perfect lease.",
+    body: "No tenant, no income, but the costs keep coming. Maintenance, taxes, the slow decay of a room nobody walks into. The default outcome of waiting for the perfect lease.",
     tint: "var(--color-ink)",
     fill: 0,
   },
@@ -18,7 +18,7 @@ const STATES = [
     revenue: "₹1,85,000",
     sub: "/ month · locked 9 years",
     headline: "The space is leased.",
-    body: "Full rent, full commitment. Wonderful — once it happens. But it can take months or years to find, and the business that could have grown here never could have afforded the door.",
+    body: "Full rent, full commitment. Wonderful, once it happens. But it can take months or years to find, and the business that could have grown here never could have afforded the door.",
     tint: "var(--color-brass)",
     fill: 1,
   },
@@ -148,7 +148,7 @@ export default function ThirdOption() {
               />
               <span className="label text-ink/50">
                 {active === 2
-                  ? "Recommended — the Meanwhile model"
+                  ? "Recommended: the Meanwhile model"
                   : "Tap a state to compare"}
               </span>
             </div>

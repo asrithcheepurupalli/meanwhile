@@ -1,5 +1,5 @@
 /**
- * A deterministic little floor-plan thumbnail derived from a listing id —
+ * A deterministic little floor-plan thumbnail derived from a listing id.
  * every space gets its own plan, drawn not photographed. On-theme + zero assets.
  */
 export default function SpaceThumb({ seed = "", tone = "var(--color-signal)", lit = true }) {

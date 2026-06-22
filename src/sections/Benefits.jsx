@@ -11,7 +11,7 @@ const BUSINESS = [
   ["Lower entry cost", "Premium locations without the crushing upfront commitment."],
   ["Market validation", "Test a high-footfall address before you bet the company on it."],
   ["Reduced risk", "Short notice periods keep your financial exposure small."],
-  ["Growth room", "Operate where your budget said you couldn't — yet."],
+  ["Growth room", "Operate where your budget said you couldn't, yet."],
   ["Upgrade path", "Convert to a full lease the moment you're ready."],
 ];
 
@@ -28,7 +28,7 @@ export default function Benefits() {
     >
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         <div className="reveal-up mb-4 flex items-center gap-4">
-          <span className="label text-[var(--color-signal)]">Win — win</span>
+          <span className="label text-[var(--color-signal)]">Win-win</span>
           <span className="h-px w-12 bg-paper-line" />
           <span className="label text-ink/45">Both sides of the door</span>
         </div>

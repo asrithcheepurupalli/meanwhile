@@ -12,10 +12,10 @@ const MONTHS = [
 ];
 
 const INQUIRIES = [
-  { who: "Ma773 — D2C eyewear", space: "Glass corner unit, 100ft Road", when: "2h ago", status: "New" },
-  { who: "Studio Forma — design agency", space: "Studio office, G-Block", when: "5h ago", status: "Verified" },
-  { who: "Pour Over Co. — café", space: "Café-ready unit, Park Street", when: "1d ago", status: "Reviewing" },
-  { who: "Lumen Skin — clinic", space: "Clinic-grade suite, 5th Block", when: "2d ago", status: "New" },
+  { who: "Ma773, D2C eyewear", space: "Glass corner unit, 100ft Road", when: "2h ago", status: "New" },
+  { who: "Studio Forma, design agency", space: "Studio office, G-Block", when: "5h ago", status: "Verified" },
+  { who: "Pour Over Co., café", space: "Café-ready unit, Park Street", when: "1d ago", status: "Reviewing" },
+  { who: "Lumen Skin, clinic", space: "Clinic-grade suite, 5th Block", when: "2d ago", status: "New" },
 ];
 
 export default function Dashboard() {
@@ -75,7 +75,7 @@ export default function Dashboard() {
               })}
             </div>
             <div className="mt-6 flex flex-wrap gap-5 border-t border-paper-line pt-5">
-              <Legend c="var(--color-paper-line)" t="Vacant — ₹0" />
+              <Legend c="var(--color-paper-line)" t="Vacant: ₹0" />
               <Legend c="var(--color-signal)" t="Meanwhile occupancy" />
               <Legend c="var(--color-brass)" t="Converted to full lease" />
             </div>

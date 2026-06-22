@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const TEXT =
-  "Not a property portal. Not a co-working desk. Not a broker. Meanwhile is an entirely new category —";
+  "Not a property portal. Not a co-working desk. Not a broker. Meanwhile is an entirely new category:";
 const PUNCH = "commercial vacancy monetization.";
 
 export default function Manifesto() {

@@ -43,7 +43,7 @@ export default function Problem() {
           />
           <Ledger
             tag="For small businesses"
-            stat="6–9×"
+            stat="6 to 9×"
             statLabel="rent up front"
             note="Before a single sale is made."
             items={BUSINESS}

@@ -5,7 +5,7 @@ import { inr } from "../data/listings";
 /**
  * Interactive proof. Drag the semi-rate; both ledgers update live. The owner's
  * "vs vacant" gain and the business's "vs full lease" saving always both stay
- * green — that's the whole pitch, made tactile.
+ * green. That's the whole pitch, made tactile.
  */
 export default function RentSplitter() {
   const ref = useReveal();
@@ -95,7 +95,7 @@ export default function RentSplitter() {
           </div>
 
           <p className="mt-8 max-w-[58ch] serif-italic text-lg text-ink/55">
-            Three months later, the startup has grown enough to take the full lease —
+            Three months later, the startup has grown enough to take the full lease,
             and the owner never lost a rupee waiting. The vacancy paid for itself.
           </p>
         </div>

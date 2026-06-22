@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 
 /**
  * A full-bleed ink band: the square footage sitting vacant "right now", ticking
- * upward relentlessly. The number never stops — that's the point.
+ * upward relentlessly. The number never stops, and that's the point.
  */
 export default function VacancyCounter() {
   const root = useRef(null);
@@ -88,7 +88,7 @@ export default function VacancyCounter() {
         </div>
 
         <p className="mt-12 max-w-[52ch] text-lg text-grey-dim md:text-xl">
-          Every vacant unit still costs its owner — maintenance, taxes, opportunity.
+          Every vacant unit still costs its owner: maintenance, taxes, opportunity.
           The meter runs whether anyone's inside or not.{" "}
           <span className="text-paper">Meanwhile turns the meter the other way.</span>
         </p>

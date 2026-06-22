@@ -179,7 +179,7 @@ export default function Nav() {
             List a space →
           </Link>
           <p className="label mt-6 text-grey">
-            Meanwhile — the marketplace for the in-between
+            Meanwhile: the marketplace for the in-between
           </p>
         </div>
       </div>

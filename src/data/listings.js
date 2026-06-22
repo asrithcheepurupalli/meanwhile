@@ -107,7 +107,7 @@ export const listings = [
     footfall: "Residential",
     floor: "2nd",
     blurb:
-      "Partitioned consulting rooms with plumbing roughed in — built for a clinic that never opened. Move in, see patients.",
+      "Partitioned consulting rooms with plumbing roughed in, built for a clinic that never opened. Move in, see patients.",
     tone: "#2f6df0",
   },
 ];

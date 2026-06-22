@@ -1,6 +1,6 @@
 /**
  * Meanwhile wordmark. "Mean" in Fraunces italic, "while" upright, with the
- * signature signal square — the lit pixel of an occupied space.
+ * signature signal square, the lit pixel of an occupied space.
  */
 export default function Wordmark({ className = "", onDark = false }) {
   return (

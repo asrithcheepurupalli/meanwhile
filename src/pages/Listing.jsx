@@ -173,7 +173,7 @@ export default function Listing() {
                   </div>
                   <p className="display text-xl">Application sent</p>
                   <p className="mt-1 text-sm text-ink/55">
-                    The owner reviews verified applicants within 48 hours. (Demo —
+                    The owner reviews verified applicants within 48 hours. (Demo:
                     nothing was really submitted.)
                   </p>
                 </div>

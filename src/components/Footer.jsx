@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import Wordmark from "./Wordmark";
 
-// One-click, pre-written email to the studio — for anyone who wants this built.
+// One-click, pre-written email to the studio, for anyone who wants this built.
 const BUILD_MAIL =
   "mailto:thebrain@made-by-ac.com?subject=" +
-  encodeURIComponent("Meanwhile — build this with us") +
+  encodeURIComponent("Meanwhile: build this with us") +
   "&body=" +
   encodeURIComponent(
     "Hi made. team,\n\nI saw Meanwhile and I'd love to talk about building something like it (or working together).\n\nWhat I have in mind:\n\n\nThanks,\n"
   );
 
 /**
- * Footer drawn as an architectural title block — the spec cartouche from the
+ * Footer drawn as an architectural title block: the spec cartouche from the
  * corner of a real blueprint. Every cell is a field. The "2% nobody asks for".
  */
 export default function Footer() {
@@ -100,7 +100,7 @@ export default function Footer() {
 
         <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
           <p className="label text-grey">
-            © {`2026`} Meanwhile — A new category: commercial vacancy monetization
+            © {`2026`} Meanwhile. A new category: commercial vacancy monetization
           </p>
           <p className="label text-grey">Concept demo · not a live marketplace</p>
         </div>
