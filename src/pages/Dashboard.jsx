@@ -24,7 +24,7 @@ export default function Dashboard() {
   const recovered = owned.reduce((s, l) => s + l.semiRent * 2, 0);
 
   return (
-    <div className="min-h-screen bg-paper pt-32 blueprint-grid">
+    <div className="min-h-[100svh] bg-paper pt-32 blueprint-grid">
       <div ref={ref} className="mx-auto max-w-[1600px] px-6 pb-28 md:px-10">
         {/* header */}
         <div className="flex flex-wrap items-end justify-between gap-6 border-b border-paper-line pb-8">

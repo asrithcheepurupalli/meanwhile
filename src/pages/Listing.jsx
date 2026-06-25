@@ -12,7 +12,7 @@ export default function Listing() {
 
   if (!l) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-paper">
+      <div className="flex min-h-[100svh] flex-col items-center justify-center bg-paper">
         <p className="display text-3xl">Space not found.</p>
         <Link to="/browse" className="signal-btn mt-6">
           Back to the index
@@ -34,7 +34,7 @@ export default function Listing() {
   ];
 
   return (
-    <div className="min-h-screen bg-paper pt-28">
+    <div className="min-h-[100svh] bg-paper pt-28">
       <div className="mx-auto max-w-[1600px] px-6 md:px-10">
         {/* breadcrumb */}
         <Link
