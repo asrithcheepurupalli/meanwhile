@@ -78,7 +78,8 @@ export default function Footer() {
             <div className={cell}>
               <span className="label text-grey">Legal</span>
               <span className="text-sm text-grey-dim">Occupancy terms</span>
-              <span className="text-sm text-grey-dim">Privacy</span>
+              <a href="/privacy" className="text-sm text-grey-dim hover:text-grey transition-colors">Privacy</a>
+              <a href="/terms" className="text-sm text-grey-dim hover:text-grey transition-colors">Terms of use</a>
               <span className="text-sm text-grey-dim">Trust &amp; safety</span>
             </div>
             <div className={cell}>
